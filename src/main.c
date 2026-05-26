@@ -4,6 +4,7 @@
 int main(int argc, char** argv) {
     printf("Hello, World!\n");
 
+    // Running tests
     test1();
     return 0;
 }
