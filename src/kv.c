@@ -27,5 +27,6 @@ kv_t* kv_init(size_t capacity) {
 }
 
 void kv_free(kv_t* table) {
-    // TODO: implement
+    free(table->entries);
+    free(table);
 }
