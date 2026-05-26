@@ -3,18 +3,18 @@
 #include "kv.h"
 
 kv_t* kv_init(size_t capacity) {
-    // Allocating memory
+    // Allocating memory for the table
     kv_t *kv_ptr = malloc(sizeof(kv_t));
-    kv_entry_t * entries = malloc(capacity * sizeof(kv_entry_t));
-
-    // Handling errors in memory allocation
     if (kv_ptr == NULL) {
-        printf("Failed to create a new kv_t\n");
+        printf("Failed to allocate memory for the table\n");
         return NULL;
     }
 
+    // Allocating memory for the entries
+    kv_entry_t * entries = calloc(capacity * sizeof(kv_entry_t));
     if (entries == NULL) {
-        printf("Failed to create a new int array of size %d\n", capacity);
+        free(kv_ptr);
+        printf("Failed to allocate memory for the entries\n");
         return NULL;
     }
 
