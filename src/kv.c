@@ -11,7 +11,7 @@ kv_t* kv_init(size_t capacity) {
     }
 
     // Allocating memory for the entries
-    kv_entry_t * entries = calloc(capacity * sizeof(kv_entry_t));
+    kv_entry_t * entries = calloc(capacity, sizeof(kv_entry_t));
     if (entries == NULL) {
         free(kv_ptr);
         printf("Failed to allocate memory for the entries\n");
