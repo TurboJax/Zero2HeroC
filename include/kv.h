@@ -4,12 +4,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct kv_t {
-    size_t capacity;
-    int count;
-};
+typedef struct {
+    char *key;
+    char *value;
+} kv_entry_t;
 
-typedef struct kv_t kv_t;
+typedef struct {
+    size_t capacity;
+    size_t count;
+    kv_entry_t *entries;
+} kv_t;
 
 /**
  * Creates a new key-value store of the specified size.
