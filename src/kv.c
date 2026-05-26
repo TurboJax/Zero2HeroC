@@ -5,7 +5,7 @@
 kv_t* kv_init(size_t capacity) {
     // Allocating memory
     kv_t *kv_ptr = malloc(sizeof(kv_t));
-    int count = malloc(sizeof(int) * capacity);
+    kv_entry_t * entries = malloc(capacity * sizeof(kv_entry_t));
 
     // Handling errors in memory allocation
     if (kv_ptr == NULL) {
@@ -13,14 +13,15 @@ kv_t* kv_init(size_t capacity) {
         return NULL;
     }
 
-    if (count == NULL) {
+    if (entries == NULL) {
         printf("Failed to create a new int array of size %d\n", capacity);
         return NULL;
     }
 
-    // Saving struct attributes
+    // Saving table attributes
     kv_ptr->capacity = capacity;
-    kv_ptr->count = count;
+    kv_ptr->count = 0;
+    kv_ptr->entries = entries;
 
     return kv_ptr;
 }
